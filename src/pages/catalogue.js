@@ -35,7 +35,7 @@ const Catalogue = () => {
                     marginTop: 30
                 }}
             >
-                Catalogue
+                Our products
                 <span>
                     <Button
                         size="mini"
