@@ -14,6 +14,13 @@ const CreateProductModal = ({
         image: ''
     });
 
+    const onChangeInput = e => {
+        setNewProduct({
+            ...newProduct,
+            [e.target.name]: e.target.value
+        })
+    }
+
     return (
         <Modal
             open={open}
@@ -22,23 +29,41 @@ const CreateProductModal = ({
                 Crea un producto
             </Modal.Header>
             <Modal.Content>
-            <Form>
-                <Form.Field>
-                <label>Nombre del producto</label>
-                <input placeholder='First Name'/>
-                </Form.Field>
-                <Form.Field>
-                <label>Precio</label>
-                <input placeholder='Last Name' />
-                </Form.Field>
-                <Form.Field>
-                <Checkbox label='I agree to the Terms and Conditions' />
-                </Form.Field>
-            </Form>
+                <Form>
+                    <h3> Nuevo producto </h3>
+                    <Form.Group
+                        widths="equal"
+                    >
+                        <Form.Input
+                            label="Nombre del producto"
+                            name="name"
+                            value={newProduct.name}
+                            onChange={onChangeInput}
+                        />
+                        <Form.Input
+                            label="Precio del producto"
+                            name="price"
+                            value={newProduct.price}
+                            onChange={onChangeInput}
+                        />
+                        <Form.Input
+                            label="Descripción del producto"
+                            name="description"
+                            value={newProduct.description}
+                            onChange={onChangeInput}
+                        />
+                        <Form.Input
+                            label="Imagen del producto"
+                            name="image"
+                            value={newProduct.image}
+                            onChange={onChangeInput}
+                        />
+                    </Form.Group>
+                </Form>
             </Modal.Content>
             <Modal.Actions>
                 <Button color='black' onClick={() => setOpen(false)}>
-                    Nope
+                    Cerrrar
                 </Button>
                 <Button
                     onClick={() => saveProduct(newProduct)}

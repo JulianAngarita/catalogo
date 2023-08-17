@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { 
     Button,
     Container,
@@ -11,7 +11,7 @@ import CreateProductModal from "../components/modals/create-product.modal";
 const Catalogue = () => {
 
 
-    const products = [
+    const p = [
         {
             name: 'Arroz con pollo',
             price: '12000',
@@ -32,10 +32,19 @@ const Catalogue = () => {
         }
     ]
 
+    const [ products, setProducts ] = useState(p)
     const [ open, setOpen ] = useState(false);
 
+    useEffect(() => {
+        console.log('Products desde useEffect', products);
+    }, [products])
+
+
     const saveProduct = (newProduct) => {
-        products.push(newProduct)
+        let newProducts = products;
+        newProducts.push(newProduct);
+        setProducts(newProducts);
+        console.log(products)
     }
 
     return (
